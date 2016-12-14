@@ -109,7 +109,12 @@ public class FileHelper {
 		BufferedWriter bw = null;
 
 		try {
-			if (!file.exists()) file.createNewFile();
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+			if (!file.exists()) {
+				file.createNewFile();
+			}
 			writer = new FileWriter(file, true);
 			bw = new BufferedWriter(writer);
 			bw.write(content.toString());
