@@ -80,17 +80,17 @@ public class DataInitializer {
 		for (Map.Entry<String, List<Map<String, List<String>>>> featureData : featuresData.entrySet()) {
 			// each kind of features combines with each kind of label classes.
 			int maxSizeOfFeature = featuresMaxSizes.get(featureData.getKey());
-			String fileName = featureData.getKey();
 			List<Map<String, List<String>>> features = featureData.getValue();
 			
 			for (Map.Entry<String, Map<String, Integer>> labelData : labelsClassData.entrySet()) {
-				
+				String fileName = featureData.getKey();
+				fileName = fileName.substring(0, fileName.lastIndexOf(".list"));
 				if (labelData.getKey().endsWith("(1).list")) {
-					fileName.replace(".list", "(1).list");
+					fileName += "(1)";
 				} else if (labelData.getKey().endsWith("(2).list")) {
-					fileName.replace(".list", "(2).list");
+					fileName += "(2)";
 				} else if (labelData.getKey().endsWith("(3).list")) {
-					fileName.replace(".list", "(3).list");
+					fileName += "(3)";
 				}
 				fileName += "MaxSize=" + maxSizeOfFeature + ".csv";
 				
