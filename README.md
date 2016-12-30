@@ -1,8 +1,7 @@
 # valid-method-ids-cnn
 
 ## First, preprocess data for deep learning.
-1. append 0 to all vectors, make all vectors hold the same size.
-
+### 1. append 0 to all vectors, make all vectors hold the same size.
 Input: inputData/unsupervised-learning/
 Output: outputData/WithoutNormalization/
 
