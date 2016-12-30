@@ -15,14 +15,15 @@ import org.slf4j.LoggerFactory;
 
 import edu.lu.uni.util.FileHelper;
 
+@Deprecated
 public class DataInitializer {
 	
 	private static Logger logger = LoggerFactory.getLogger(DataInitializer.class);
 
-	private static final String FEATURE_INTEGER_VECTOR_FILE_PATH = "dataset/integer-vectors/features/";
-	private static final String LABEL_INTEGER_VECTOR_FILE_PATH = "dataset/integer-vectors/labels/";
-	private static final String TRAINING_FILE_PATH = "src/main/resources/data-for-CNN/trainingdata/";
-	private static final String TESTING_FILE_PATH = "src/main/resources/data-for-CNN/testingdata/";
+	private static final String FEATURE_INTEGER_VECTOR_FILE_PATH = "inputData/supervised-learning/features/";
+	private static final String LABEL_INTEGER_VECTOR_FILE_PATH = "inputData/supervised-learning/labels/";
+	private static final String TRAINING_FILE_PATH = "src/main/resources/supervised-learning/trainingdata/";
+	private static final String TESTING_FILE_PATH = "src/main/resources/supervised-learning/testingdata/";
 	
 	public static void main(String[] args) throws IOException {
 		DataInitializer di = new DataInitializer();

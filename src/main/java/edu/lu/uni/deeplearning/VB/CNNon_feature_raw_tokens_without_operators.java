@@ -46,9 +46,9 @@ public class CNNon_feature_raw_tokens_without_operators {
 		
 		int nChannels = 1;   // Number of input channels
         int outputNum = numClasses; // The number of possible outcomes
-        int batchSize = 100; // Test batch size
+        int batchSize = 500; // Test batch size
         int nEpochs = 1;     // Number of training epochs
-        int iterations = 1;  // Number of training iterations
+        int iterations = 10;  // Number of training iterations
         int seed = 123;      //
 
         log.info("Load data....");
@@ -68,8 +68,7 @@ public class CNNon_feature_raw_tokens_without_operators {
                 .seed(seed)
                 .iterations(iterations) // Training iterations as above
                 .regularization(true).l2(0.0005)
-                .learningRate(.01)//.biasLearningRate(0.02)
-                //.learningRateDecayPolicy(LearningRatePolicy.Inverse).lrPolicyDecayRate(0.001).lrPolicyPower(0.75)
+                .learningRate(.006).biasLearningRate(0.02)
                 .weightInit(WeightInit.XAVIER)
                 .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
                 .updater(Updater.NESTEROVS).momentum(0.9)
@@ -95,8 +94,8 @@ public class CNNon_feature_raw_tokens_without_operators {
                         .stride(1,2)
                         .build())
                 .layer(4, new DenseLayer.Builder().activation("relu")
-                        .nOut(500).build())
-                .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.MEAN_ABSOLUTE_ERROR)
+                        .nOut(100).build())
+                .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.MSE)
                         .nOut(outputNum)
                         .activation("softmax")
                         .build())
@@ -109,7 +108,7 @@ public class CNNon_feature_raw_tokens_without_operators {
 
 
         log.info("Train model....");
-        model.setListeners(new ScoreIterationListener(1));
+        model.setListeners(new ScoreIterationListener(100));
         for( int i=0; i<nEpochs; i++ ) {
             model.fit(trainingData);
             log.info("*** Completed epoch {} ***", i);

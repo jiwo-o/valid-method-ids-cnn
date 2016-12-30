@@ -35,8 +35,8 @@ public class CNNon_feature_ast_node_name_with_node_label {
 	 * 701
 	 */
 	private static Logger log = LoggerFactory.getLogger(CNNon_feature_ast_node_name_with_node_label.class);
-	private static final String TRAINING_DATA_FILE_PATH = "/data-for-CNN/trainingdata/";
-	private static final String TESTING_DATA_FILE_PATH = "/data-for-CNN/testingdata/";
+	private static final String TRAINING_DATA_FILE_PATH = "/supervised-learning/trainingdata/";
+	private static final String TESTING_DATA_FILE_PATH = "/supervised-learning/testingdata/";
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
 		String fileName = "apache$commons-math$feature-ast-node-name-with-node-label(SIMPLIFIED_NLP)(1)MaxSize=76.csv";

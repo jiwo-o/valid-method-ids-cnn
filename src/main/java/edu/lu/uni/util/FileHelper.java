@@ -12,6 +12,30 @@ import java.util.List;
 
 public class FileHelper {
 	
+	public static void createFile(File file, String content) {
+		FileWriter writer = null;
+		BufferedWriter bw = null;
+
+		try {
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+			
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			writer = new FileWriter(file);
+			bw = new BufferedWriter(writer);
+			bw.write(content);
+			bw.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			close(bw);
+			close(writer);
+		}
+	}
+	
 	public static String readFile(File file) {
 		byte[] input = null;
 		BufferedInputStream bis = null;
@@ -38,23 +62,6 @@ public class FileHelper {
 		return sourceCode;
 	}
 	
-	/**
-	 * Check whether a file path is valid or not.
-	 * 
-	 * @param path, file path.
-	 * @return true, the file path is valid.
-	 * 		   false, the file path is invalid.
-	 */
-	public static boolean isValidPath(String path) {
-		File file = new File(path);
-		
-		if (file.exists()) {
-			return true;
-		}
-		
-		return false;
-	}
-
 	public static List<File> getAllFiles(String filePath, String type) {
 		return listAllFiles(new File(filePath), type);
 	}
