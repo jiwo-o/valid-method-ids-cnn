@@ -4,7 +4,6 @@
 1. append 0 to all vectors, make all vectors hold the same size.
 
 Input: inputData/unsupervised-learning/
-
 Output: outputData/WithoutNormalization/
 
 2. Normalize the values in the data vectors of results of the first step.
